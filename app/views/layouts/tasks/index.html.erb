@@ -1,0 +1,12 @@
+<ul>
+  <% @tasks.each do |task| %>
+    <li><input type="checkbox" <%= task.completed ? "checked":"" %>>
+    <%= link_to task.title, task_path(task) %>
+    <% garbage = "<i class=\"fa fa-trash-o\"></i>" %>
+    <%= link_to garbage.html_safe,
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
